@@ -1,0 +1,39 @@
+* {
+  font-family: "Poiret One", cursive;
+}
+/* Movie selector */
+#title {
+  margin-left: 20px;
+  font-size: 40px;
+  font-weight: bold;
+}
+
+/* Buttons for Movies */
+.space {
+  font-weight: 600;
+  color: black;
+  background-color: rgb(231, 129, 61);
+  margin: 5px;
+  border-radius: 10px;
+}
+/* Header */
+.nav-wrapper {
+  padding-top: 10px;
+  background-color: rgb(194, 49, 90);
+  height: 100px;
+}
+
+/* hover effect for btn */
+.waves-effect:hover {
+  background-color: rgb(255, 255, 255);
+}
+/* Search input */
+#search {
+  border-radius: 10px;
+  margin-right: 20px;
+  height: 60px;
+}
+/* Size of background for header */
+nav {
+  height: 85px;
+}
