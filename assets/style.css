@@ -1,5 +1,10 @@
 * {
   font-family: "Poiret One", cursive;
+  
+}
+
+body {
+  background-color: rgb(63, 63, 63);
 }
 /* Movie selector */
 #title {
@@ -36,4 +41,30 @@
 /* Size of background for header */
 nav {
   height: 85px;
+}
+
+
+.main-container1 {
+  display: flex;
+  justify-content: center;
+  padding-left: 150px;
+}
+
+.main-container2 {
+  display: flex;
+  justify-content: center;
+  padding-left: 150px;
+}
+
+footer  {
+  text-align: center;
+  background-color: rgb(194, 49, 90);
+  padding-bottom: 1px;
+  
+  
+}
+
+h3 {
+  font-size: 20px;
+  font-weight:bolder;
 }
