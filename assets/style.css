@@ -7,7 +7,7 @@ body {
   background-color: rgb(63, 63, 63);
 }
 /* Movie selector */
-#title {
+#movie-title {
   margin-left: 20px;
   font-size: 40px;
   font-weight: bold;
@@ -20,6 +20,17 @@ body {
   background-color: rgb(231, 129, 61);
   margin: 5px;
   border-radius: 10px;
+}
+/* Back btn for the alt html */
+.space1 {
+  font-weight: bolder;
+  font-size: large;
+  color: black;
+  background-color: rgb(231, 129, 61);
+  margin: 5px;
+  border-radius: 10px;
+  height: 45px;
+  width: 145px;
 }
 /* Header */
 .nav-wrapper {
@@ -67,4 +78,9 @@ footer  {
 h3 {
   font-size: 20px;
   font-weight:bolder;
+}
+
+.row{
+  height: 100vh;
+  width: 100vw;
 }
