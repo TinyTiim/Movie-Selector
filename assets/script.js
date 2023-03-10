@@ -1,62 +1,49 @@
-var title = document.querySelector("#title1")
-var plot = document.querySelector("#plot1")
+var movieApiUrl = "http://www.omdbapi.com/";
+var movieApiKey = "e830d49f";
+const searchTerm = "action";
+const type = "movie";
+const url = `${movieApiUrl}?apikey=${movieApiKey}&s=${searchTerm}&type=${type}`;
+// Wrap whole fetch call that takes in url and a random number.
+function getMovie(num) {
+  fetch(url)
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (data) {
+      // Wrap all below code with for loop 6 times
+      console.log(data);
+      var randomMovie = data.Search[num];
+      var movieId = randomMovie.imdbID;
 
+      // Get the title and plot of the random movie
+      return fetch(
+        `${movieApiUrl}/?apikey=${movieApiKey}&i=${movieId}&plot=short`
+      );
+    })
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (data) {
+      var movieTitle = data.Title;
+      var moviePlot = data.Plot;
 
-var movieApiUrl = 'http://www.omdbapi.com';
+      var titleElement = document.getElementById("title" + num);
 
-var movieApiKey = 'e830d49f';
+      titleElement.textContent = movieTitle;
 
+      var plotElement = document.getElementById("plot" + num);
 
-const searchTerm = 'action';
-const type = 'movie';
-const page = '100';
+      plotElement.textContent = moviePlot;
+      plotElement.setAttribute("id", "plot");
+    })
+    .catch(function (error) {
+      console.error(error);
+    });
+}
 
-const url = `http://www.omdbapi.com/?apikey=${movieApiKey}&s=${searchTerm}&type=${type}&page=80&plot=full`;
-
-fetch(url)
-  .then(function(response) {
-    return response.json();
-  })
-  .then(function(data) {
-    var randomMovie = data.Search[Math.floor(Math.random() * data.Search.length)];
-    var movieId = randomMovie.imdbID;
-
-    // Get the title and plot of the random movie
-    return fetch(url);
-  })
-  .then(function(response) {
-    return response.json();
-  })
-  .then(function(data) {
-    title = data.Title;
-    plot = data.Plot;
-
-    // Populate the HTML code with the title and plot
-    
-    for (var i = 0; i < title.length; i++) {
-        title[i].textContent = title;
-    }
-
-    
-    for (var i = 0; i < plot.length; i++) {
-        plot[i].textContent = moviePlot;
-        plot[i].setAttribute('id', 'plot');
-    }
-  })
-  .catch(function(error) {
-    console.error(error);
-  });
-
-fetch(url)
-  .then(response => response.json())
-  .then(data => {
-    console.log(data.Search);
-  })
-  .catch(error => {
-    console.log(error);
-  });
-
-
-
-var giphyApiUrl = 'https://api.giphy.com/v1/gifs';
-var giphyApiKey = 'PFNgMPROG1VflMj5EkACFURISlFAli0D';
+getMovie(1);
+getMovie(2);
+getMovie(3);
+getMovie(4);
+getMovie(5);
+getMovie(6);
