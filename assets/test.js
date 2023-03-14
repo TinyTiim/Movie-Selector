@@ -3,6 +3,18 @@ var movieApiKey = "e830d49f";
 
 const searchInput = document.getElementById("search");
 
+window.onload = function () {
+  // Get search term from local storage
+  const searchTerm = localStorage.getItem("searchTerm");
+  console.log("you have entered " + searchTerm);
+
+  // If search term exists, set input value and call searchMovies()
+  if (searchTerm) {
+    searchInput.value = searchTerm;
+    searchMovies();
+  }
+};
+
 // Add event listener for key press on search input
 searchInput.addEventListener("keyup", function (event) {
   // Check if enter key is pressed (keyCode 13)
