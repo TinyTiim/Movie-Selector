@@ -1,14 +1,14 @@
 var movieApiUrl = "http://www.omdbapi.com/";
 var movieApiKey = "e830d49f";
 const searchTerm = "horror";
-const romancehTerm ="romance";
-const comedyTerm ="comedy";
-const actionTerm ="action";
+const romance ="romance";
+const comedy ="comedy";
+const action ="action";
 const type = "movie";
 const url = `${movieApiUrl}?apikey=${movieApiKey}&s=${searchTerm}&type=${type}`;
-const url1 = `${movieApiUrl}?apikey=${movieApiKey}&s=${romancehTerm}&type=${type}`;
-const url2 = `${movieApiUrl}?apikey=${movieApiKey}&s=${comedyTerm}&type=${type}`;
-const url3 = `${movieApiUrl}?apikey=${movieApiKey}&s=${actionTerm}&type=${type}`;
+const url1 = `${movieApiUrl}?apikey=${movieApiKey}&s=${romance}&type=${type}`;
+const url2 = `${movieApiUrl}?apikey=${movieApiKey}&s=${comedy}&type=${type}`;
+const url3 = `${movieApiUrl}?apikey=${movieApiKey}&s=${action}&type=${type}`;
 // Wrap whole fetch call that takes in url and a random number.
 function getMovie(num) {
   fetch(url)
@@ -68,9 +68,9 @@ romanceButton.addEventListener('click', function() {
     var randomMovie = data.Search[num];
     var movieId = randomMovie.imdbID;
 
-  return fetch(
-    `${movieApiUrl}?apikey=${movieApiKey}&s=${romance}&type=${type}&i=${movieId}&plot=short`
-  );
+return fetch(
+`${movieApiUrl}/?apikey=${movieApiKey}&i=${movieId}&plot=short`
+    );
 })
 .then(function (response) {
   return response.json();
@@ -86,7 +86,7 @@ romanceButton.addEventListener('click', function() {
   var plotElement = document.getElementById("plot" + num);
 
   plotElement.textContent = moviePlot;
-  plotElement.setAttribute("id", "plot");
+  plotElement.setAttribute("id"+ num, "plot" + num);
 })
 .catch(function (error) {
   console.error(error);
@@ -119,7 +119,7 @@ function getComedy(num) {
       var movieId = randomMovie.imdbID;
   
     return fetch(
-      `${movieApiUrl}?apikey=${movieApiKey}&s=${comedy}&type=${type}&i=${movieId}&plot=short`
+      `${movieApiUrl}/?apikey=${movieApiKey}&i=${movieId}&plot=short`
     );
   })
   .then(function (response) {
@@ -169,7 +169,7 @@ function getComedy(num) {
         var movieId = randomMovie.imdbID;
     
       return fetch(
-        `${movieApiUrl}?apikey=${movieApiKey}&s=${action}&type=${type}&i=${movieId}&plot=short`
+        `${movieApiUrl}/?apikey=${movieApiKey}&i=${movieId}&plot=short`
       );
     })
     .then(function (response) {
@@ -203,3 +203,5 @@ function getComedy(num) {
     getAction(4);
     getAction(5);
     getAction(6);
+
+    

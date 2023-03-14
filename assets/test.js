@@ -1,37 +1,40 @@
 var movieApiUrl = "http://www.omdbapi.com/";
 var movieApiKey = "e830d49f";
-const searchTerm = "action";
-const type = "movie";
-const url = `${movieApiUrl}?apikey=${movieApiKey}&s=${searchTerm}&type=${type}`;
-var counter = 0;
 
-fetch(url)
-  .then(function (response) {
-    console.log(response);
-    return response.json();
-  })
-  .then(function (data) {
-    for (var i = 0; i <= 6; i++) {
-      // Inside for loop set counter ++
-      var randomMovie =
-        data.Search[Math.floor(Math.random() * data.Search.length)];
-      var movieId = randomMovie.imdbID;
 
-      // Get the title and plot of the random movie
-      fetch(
-        `${movieApiUrl}/?apikey=${movieApiKey}&i=${movieId}&plot=short`
-      ).then(function (response) {
-        var movieTitle = response.Title;
-        var moviePlot = response.Plot;
+const searchInput = document.getElementById("search");
 
-        var plotElements = document.getElementById("#plot" + i);
-        var titleElements = document.getElementById("#title" + i);
-        titleElements.textContent = movieTitle;
-        plotElements.textContent = moviePlot;
-        plotElements.setAttribute("id", "plot");
-      });
-    }
-  })
-  .catch(function (error) {
-    console.error(error);
-  });
+// Add event listener for key press on search input
+searchInput.addEventListener("keyup", function(event) {
+  // Check if enter key is pressed (keyCode 13)
+  if (event.keyCode === 13) {
+    // Call your function here
+    searchMovies(event);
+    
+  }
+});
+
+function searchMovies() {
+  const searchTerm = searchInput.value;
+  console.log("you have entered " + searchTerm);
+  
+  const apiUrl = `${movieApiUrl}?apikey=${movieApiKey}&s=${searchTerm}&plot=full`;
+
+  fetch(apiUrl)
+    .then(response => response.json())
+    .then(data => {
+      // Extract the movie information from the response
+      const movieTitle = data.Search[0].Title;
+      const moviePlot = data.Search[0].Plot;
+
+      // Display the movie information on the page
+      const titleElement = document.getElementById("title-src");
+      titleElement.textContent = movieTitle;
+
+      const plotElement = document.getElementById("plot-src");
+      plotElement.textContent = moviePlot;
+
+      
+    })
+    .catch(error => console.error(error));
+}
