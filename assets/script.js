@@ -8,7 +8,7 @@ const comedy ="comedy";
 const action ="action";
 const type = "movie";
 const rating ="g"
-const url = `${movieApiUrl}?apikey=${movieApiKey}&s=${searchTerm}&type=${type}`;
+const url = `${movieApiUrl}?apikey=${movieApiKey}&s=${searchTerm}&type=${type}&page=1`;
 const url1 = `${movieApiUrl}?apikey=${movieApiKey}&s=${romance}&type=${type}`;
 const url2 = `${movieApiUrl}?apikey=${movieApiKey}&s=${comedy}&type=${type}`;
 const url3 = `${movieApiUrl}?apikey=${movieApiKey}&s=${action}&type=${type}`;
@@ -41,11 +41,10 @@ function getMovie(num) {
       titleElement.textContent = movieTitle;
       var plotElement = document.getElementById("plot" + num);
       plotElement.textContent = moviePlot;
-      var gifWidth = 100;
-      var gifHeight = 100;
+     
   
 
-      return fetch(`${giphyApiUrl}/search?api_key=${giphyApiKey}&q=${encodeURIComponent(movieTitle)}&rating=${rating}&limit=1&width=${gifWidth}&height=${gifHeight}`);
+      return fetch(`${giphyApiUrl}/search?api_key=${giphyApiKey}&q=${encodeURIComponent(movieTitle)}&rating=${rating}&limit=1}`);
   })
   .then(function (response) {
     return response.json();
