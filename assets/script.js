@@ -1,14 +1,19 @@
 var movieApiUrl = "http://www.omdbapi.com/";
 var movieApiKey = "e830d49f";
+var giphyApiUrl = 'https://api.giphy.com/v1/gifs';
+var giphyApiKey = 'PFNgMPROG1VflMj5EkACFURISlFAli0D';
 const searchTerm = "horror";
 const romance ="romance";
 const comedy ="comedy";
 const action ="action";
 const type = "movie";
+const rating ="g"
 const url = `${movieApiUrl}?apikey=${movieApiKey}&s=${searchTerm}&type=${type}`;
 const url1 = `${movieApiUrl}?apikey=${movieApiKey}&s=${romance}&type=${type}`;
 const url2 = `${movieApiUrl}?apikey=${movieApiKey}&s=${comedy}&type=${type}`;
 const url3 = `${movieApiUrl}?apikey=${movieApiKey}&s=${action}&type=${type}`;
+const url4 = `${giphyApiUrl}?apikey=${giphyApiKey}&type=gif&rating=${rating}`;
+
 // Wrap whole fetch call that takes in url and a random number.
 function getMovie(num) {
   fetch(url)
@@ -36,11 +41,29 @@ function getMovie(num) {
       titleElement.textContent = movieTitle;
       var plotElement = document.getElementById("plot" + num);
       plotElement.textContent = moviePlot;
-    })
-    .catch(function (error) {
-      console.error(error);
-    });
+      var gifWidth = 100;
+      var gifHeight = 100;
+  
+
+      return fetch(`${giphyApiUrl}/search?api_key=${giphyApiKey}&q=${encodeURIComponent(movieTitle)}&rating=${rating}&limit=1&width=${gifWidth}&height=${gifHeight}`);
+  })
+  .then(function (response) {
+    return response.json();
+  })
+  .then(function (data) {
+    // Get the GIF URL and display it
+ 
+    var gifUrl = data.data[0].images.original.url;
+    
+    var gifElement = document.getElementById("poster" + num);
+    gifElement.setAttribute("src", gifUrl);
+  })
+  .catch(function (error) {
+    console.error(error);
+  });
 }
+
+
 getMovie(1);
 getMovie(2);
 getMovie(3);
