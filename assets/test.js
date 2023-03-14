@@ -1,40 +1,50 @@
 var movieApiUrl = "http://www.omdbapi.com/";
 var movieApiKey = "e830d49f";
 
-
 const searchInput = document.getElementById("search");
 
+window.onload = function () {
+  // Get search term from local storage
+  const searchTerm = localStorage.getItem("searchTerm");
+  console.log("you have entered " + searchTerm);
+
+  // If search term exists, set input value and call searchMovies()
+  if (searchTerm) {
+    searchInput.value = searchTerm;
+    searchMovies();
+  }
+};
+
 // Add event listener for key press on search input
-searchInput.addEventListener("keyup", function(event) {
+searchInput.addEventListener("keyup", function (event) {
   // Check if enter key is pressed (keyCode 13)
   if (event.keyCode === 13) {
     // Call your function here
-    searchMovies(event);
-    
+    // window.location = "./index2.html";
+    searchMovies();
   }
 });
 
 function searchMovies() {
-  const searchTerm = searchInput.value;
+  var searchTerm = searchInput.value;
+  //var movieId = searchInput.value;
   console.log("you have entered " + searchTerm);
-  
-  const apiUrl = `${movieApiUrl}?apikey=${movieApiKey}&s=${searchTerm}&plot=full`;
 
+ var apiUrl = `${movieApiUrl}?apikey=${movieApiKey}&t=${searchTerm}`;
+  //var apiurl = `${movieApiUrl}?apikey=${movieApiKey}&s=$`
   fetch(apiUrl)
-    .then(response => response.json())
-    .then(data => {
+    .then((response) => response.json())
+    .then((data) => {
       // Extract the movie information from the response
-      const movieTitle = data.Search[0].Title;
-      const moviePlot = data.Search[0].Plot;
+      var movieTitle = data.Title;
+      var moviePlot = data.Plot;
 
       // Display the movie information on the page
-      const titleElement = document.getElementById("title-src");
+      var titleElement = document.getElementById("title-src");
       titleElement.textContent = movieTitle;
 
-      const plotElement = document.getElementById("plot-src");
+      var plotElement = document.getElementById("plot-src");
       plotElement.textContent = moviePlot;
-
-      
+      console.log(moviePlot);
     })
-    .catch(error => console.error(error));
 }
