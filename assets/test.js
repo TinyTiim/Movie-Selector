@@ -1,5 +1,9 @@
 var movieApiUrl = "http://www.omdbapi.com/";
 var movieApiKey = "e830d49f";
+const rating ="g"
+var giphyApiUrl = 'https://api.giphy.com/v1/gifs';
+var giphyApiKey = 'PFNgMPROG1VflMj5EkACFURISlFAli0D';
+const url4 = `${giphyApiUrl}?apikey=${giphyApiKey}&type=gif&rating=${rating}`;
 
 const searchInput = document.getElementById("search");
 
@@ -46,5 +50,22 @@ function searchMovies() {
       var plotElement = document.getElementById("plot-src");
       plotElement.textContent = moviePlot;
       console.log(moviePlot);
+      var gifWidth = 100;
+      var gifHeight = 100;
+      return fetch(`${giphyApiUrl}/search?api_key=${giphyApiKey}&q=${encodeURIComponent(movieTitle)}&rating=${rating}&limit=1&width=${gifWidth}&height=${gifHeight}`);
     })
-}
+    .then(function (response) {
+    return response.json();
+    })
+    .then(function (data) {
+    // Get the GIF URL and display it
+    
+    var gifUrl = data.data[0].images.original.url;
+    
+    var gifElement = document.getElementById("img-src");
+    gifElement.setAttribute("src", gifUrl);
+    })
+    .catch(function (error) {
+    console.error(error);
+    });
+    }
