@@ -41,11 +41,26 @@ function getMovie(num) {
       titleElement.textContent = movieTitle;
       var plotElement = document.getElementById("plot" + num);
       plotElement.textContent = moviePlot;
-    })
+      var gifWidth = 100;
+      var gifHeight = 100;
+
+
+      return fetch(`${giphyApiUrl}/search?api_key=${giphyApiKey}&q=${encodeURIComponent(movieTitle)}&rating=${rating}&limit=1&width=${gifWidth}&height=${gifHeight}`);
+  })
+  .then(function (response) {
+    return response.json();
+  })
+  .then(function (data) {
+    // Get the GIF URL and display it
+ 
+    var gifUrl = data.data[0].images.original.url;
+
+    var gifElement = document.getElementById("poster" + num);
+    gifElement.setAttribute("src", gifUrl);
+  })
   .catch(function (error) {
     console.error(error);
-  })
-
+  });
 }
 
 
@@ -82,12 +97,27 @@ romanceButton.addEventListener('click', function() {
   titleElement.textContent = movieTitle;
   var plotElement = document.getElementById("plot" + num);
   plotElement.textContent = moviePlot;
+  var gifWidth = 100;
+  var gifHeight = 100;
+  return fetch(`${giphyApiUrl}/search?api_key=${giphyApiKey}&q=${encodeURIComponent(movieTitle)}&rating=${rating}&limit=1&width=${gifWidth}&height=${gifHeight}`);
+})
+.then(function (response) {
+return response.json();
+})
+.then(function (data) {
+// Get the GIF URL and display it
+
+var gifUrl = data.data[0].images.original.url;
+
+var gifElement = document.getElementById("poster" + num);
+gifElement.setAttribute("src", gifUrl);
 })
 .catch(function (error) {
 console.error(error);
-})
+});
 })
 }
+
 getRomance(1);
 getRomance(2);
 getRomance(3);
@@ -121,10 +151,24 @@ function getComedy(num) {
     titleElement.textContent = movieTitle;  
     var plotElement = document.getElementById("plot" + num);  
     plotElement.textContent = moviePlot;
+    var gifWidth = 100;
+    var gifHeight = 100;
+    return fetch(`${giphyApiUrl}/search?api_key=${giphyApiKey}&q=${encodeURIComponent(movieTitle)}&rating=${rating}&limit=1&width=${gifWidth}&height=${gifHeight}`);
+  })
+  .then(function (response) {
+  return response.json();
+  })
+  .then(function (data) {
+  // Get the GIF URL and display it
+  
+  var gifUrl = data.data[0].images.original.url;
+  
+  var gifElement = document.getElementById("poster" + num);
+  gifElement.setAttribute("src", gifUrl);
   })
   .catch(function (error) {
-    console.error(error);
-  })  
+  console.error(error);
+  });
   })
   }
   
@@ -160,12 +204,27 @@ function getComedy(num) {
       titleElement.textContent = movieTitle;
       var plotElement = document.getElementById("plot" + num);    
       plotElement.textContent = moviePlot;
-    })
-    .catch(function (error) {
-      console.error(error);    
-    })    
-    })
-    }    
+      var gifWidth = 100;
+  var gifHeight = 100;
+  return fetch(`${giphyApiUrl}/search?api_key=${giphyApiKey}&q=${encodeURIComponent(movieTitle)}&rating=${rating}&limit=1&width=${gifWidth}&height=${gifHeight}`);
+})
+.then(function (response) {
+return response.json();
+})
+.then(function (data) {
+// Get the GIF URL and display it
+
+var gifUrl = data.data[0].images.original.url;
+
+var gifElement = document.getElementById("poster" + num);
+gifElement.setAttribute("src", gifUrl);
+})
+.catch(function (error) {
+console.error(error);
+});
+})
+}
+  
     getAction(1);
     getAction(2);
     getAction(3);
@@ -182,29 +241,8 @@ searchInput.addEventListener("keyup", function (event) {
   }
 });
 
-window.onload = function(){
-  var searchTerm = localStorage.getItem('searchTerm');
-  if (searchTerm){
-    localStorage.removeItem('searchTerm');
-    searchMovies(searchTerm);
-  }  
-}
-
-function searchMovies(searchTerm) {
+window.onload = function () {
+  // Get search term from local storage
+  const searchTerm = localStorage.getItem("searchTerm");
   console.log("you have entered " + searchTerm);
-
- var apiUrl = `${movieApiUrl}?apikey=${movieApiKey}&t=${searchTerm}`;
-  fetch(apiUrl)
-    .then((response) => response.json())
-    .then((data) => {
-      var movieTitle = data.Title;
-      var moviePlot = data.Plot;
-
-      var titleElement = document.getElementById("title-src");
-      titleElement.textContent = movieTitle;
-
-      var plotElement = document.getElementById("plot-src");
-      plotElement.textContent = moviePlot;
-      console.log(moviePlot);
-    })
 }
