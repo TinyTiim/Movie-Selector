@@ -6,7 +6,7 @@ https://tinytiim.github.io/Movie-Selector/
 
 With this application it gives you a variety of movies to choose from giving you the title,plot, and gernes. As well as being able to search up movies.
 
-#Installation
+##Installation
 
 N/A
 
@@ -18,7 +18,7 @@ If you are clueless to what movie to watch or have a specific movie in mind this
 
 ChatGPT
 
-#Contributors
+##Contributors
 
 DreadSlack,
 snowthebotttt,
