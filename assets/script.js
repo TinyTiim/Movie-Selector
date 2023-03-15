@@ -41,26 +41,11 @@ function getMovie(num) {
       titleElement.textContent = movieTitle;
       var plotElement = document.getElementById("plot" + num);
       plotElement.textContent = moviePlot;
-      var gifWidth = 100;
-      var gifHeight = 100;
-  
-
-      return fetch(`${giphyApiUrl}/search?api_key=${giphyApiKey}&q=${encodeURIComponent(movieTitle)}&rating=${rating}&limit=1&width=${gifWidth}&height=${gifHeight}`);
-  })
-  .then(function (response) {
-    return response.json();
-  })
-  .then(function (data) {
-    // Get the GIF URL and display it
- 
-    var gifUrl = data.data[0].images.original.url;
-    
-    var gifElement = document.getElementById("poster" + num);
-    gifElement.setAttribute("src", gifUrl);
-  })
+    })
   .catch(function (error) {
     console.error(error);
-  });
+  })
+
 }
 
 
@@ -85,7 +70,7 @@ romanceButton.addEventListener('click', function() {
     var randomMovie = data.Search[num];
     var movieId = randomMovie.imdbID;
 
-  return fetch(`${movieApiUrl}?apikey=${movieApiKey}&t=${romance}&i=${movieId}`);
+  return fetch(`${movieApiUrl}/?apikey=${movieApiKey}&i=${movieId}&plot=short`);
 })
 .then(function (response) {
   return response.json();
@@ -94,12 +79,12 @@ romanceButton.addEventListener('click', function() {
   var movieTitle = data.Title;
   var moviePlot = data.Plot;
   var titleElement = document.getElementById("title" + num);
-  titleElement.textContent = movieTitle;  
+  titleElement.textContent = movieTitle;
   var plotElement = document.getElementById("plot" + num);
-  plotElement.textContent = moviePlot;  
+  plotElement.textContent = moviePlot;
 })
 .catch(function (error) {
-  console.error(error);
+console.error(error);
 })
 })
 }
@@ -124,7 +109,7 @@ function getComedy(num) {
       var randomMovie = data.Search[num];
      var movieId = randomMovie.imdbID;
   
-    return fetch(`${movieApiUrl}?apikey=${movieApiKey}&s=${comedy}&type=${type}&i=${movieId}&plot=short`);
+    return fetch(`${movieApiUrl}/?apikey=${movieApiKey}&i=${movieId}&plot=short`);
   })
   .then(function (response) {
     return response.json();
@@ -163,7 +148,7 @@ function getComedy(num) {
         console.log(data);
         var randomMovie = data.Search[num];
         var movieId = randomMovie.imdbID;    
-      return fetch(`${movieApiUrl}?apikey=${movieApiKey}&s=${action}&type=${type}&i=${movieId}&plot=short`);
+      return fetch(`${movieApiUrl}/?apikey=${movieApiKey}&i=${movieId}&plot=short`);
     })
     .then(function (response) {
       return response.json();
