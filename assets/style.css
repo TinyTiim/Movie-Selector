@@ -1,6 +1,5 @@
 * {
   font-family: "Poiret One", cursive;
-  
 }
 
 body {
@@ -54,7 +53,6 @@ nav {
   height: 85px;
 }
 
-
 .main-container1 {
   display: flex;
   justify-content: center;
@@ -67,25 +65,29 @@ nav {
   padding-left: 150px;
 }
 
-footer  {
+footer {
   text-align: center;
   background-color: rgb(194, 49, 90);
   padding-bottom: 1px;
-  
-  
 }
 
 h3 {
   font-size: 20px;
-  font-weight:bolder;
+  font-weight: bolder;
 }
 
-.row{
-  height: 100vh;
-  width: 100vw;
+.card-content {
+  color: black;
+  font-weight: 800;
+  max-width: 450px;
+  max-height: 800px;
 }
 
-.card-image {
-  width: 350px;
-  height: 200px;
+.card {
+  border: 3px solid black;
+  border-radius: 5px;
+}
+
+.card-title {
+  color: black;
 }
