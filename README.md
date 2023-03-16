@@ -15,6 +15,8 @@ Our team worked hard to create a user-friendly and visually appealing website th
 APIs used:
 
 https://www.omdbapi.com/
+
+
 https://developers.giphy.com/
 
 ##Usage
