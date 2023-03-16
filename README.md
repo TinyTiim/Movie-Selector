@@ -4,11 +4,18 @@ https://tinytiim.github.io/Movie-Selector/
 
 ##Description
 
-With this application it gives you a variety of movies to choose from giving you the title,plot, and gernes. As well as being able to search up movies.
+Welcome to our movie selector website, created as part of Project 1 in our bootcamp program. Upon opening the website, you will be presented with six movie options that you can easily interchange by selecting the buttons located at the top of the page. These buttons allow you to filter the movies by genre, including comedy, horror, and romance.
+
+In addition to the pre-selected movies, we have also implemented a search feature that allows you to find your desired movie quickly. Once you enter the name of the movie in the search bar, the website will redirect you to another page that displays a picture of the movie, along with a brief description.
+
+Our team worked hard to create a user-friendly and visually appealing website that will make your movie selection process more enjoyable. We hope that you find our website useful and entertaining, and we appreciate any feedback that you may have.
 
 ##Installation
 
-N/A
+APIs used:
+
+https://www.omdbapi.com/
+https://developers.giphy.com/
 
 ##Usage
 
