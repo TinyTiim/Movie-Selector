@@ -7,18 +7,21 @@ body {
 }
 /* Movie selector */
 #movie-title {
+  color: white;
   margin-left: 20px;
   font-size: 40px;
-  font-weight: bold;
+  font-weight: bolder;
 }
 
 /* Buttons for Movies */
 .space {
+  font-size: 24px;
   font-weight: 600;
   color: black;
   background-color: rgb(231, 129, 61);
   margin: 5px;
   border-radius: 10px;
+  width: 200px;
 }
 /* Back btn for the alt html */
 .space1 {
@@ -79,15 +82,72 @@ h3 {
 .card-content {
   color: black;
   font-weight: 800;
-  max-width: 450px;
-  max-height: 800px;
-}
-
-.card {
-  border: 3px solid black;
+  border: 3px solid rgb(194, 49, 90);
   border-radius: 5px;
 }
 
+.card {
+  border: 3px solid rgb(194, 49, 90);
+  border-radius: 5px;
+  width: 350px;
+  height: auto;
+}
+
 .card-title {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  color: rgb(255, 255, 255);
+  height: auto;
+  width: auto;
+  background-color: rgb(194, 49, 90);
+}
+
+.card-image {
+  max-height: 400px;
+  max-width: auto;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#title1,
+#title2,
+#title3,
+#title4,
+#title5,
+#title6 {
+  font-weight: 800;
+}
+
+#plot1 {
   color: black;
+}
+
+.img-container {
+  background-image: url(./Images/Darker.jpg);
+  background-size: cover;
+  background-position: center;
+  padding: 0;
+  margin: 0;
+}
+
+body,
+.img-container2 {
+  background-image: url(./Images/Darker.jpg);
+  background-size: cover;
+  padding: 0;
+  margin: 0;
+}
+
+.page2 {
+  width: 500px;
+  height: auto;
+}
+
+.redirect1 {
+  padding-top: 150px;
 }
