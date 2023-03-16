@@ -8,7 +8,7 @@ const comedy = "comedy";
 const action = "action";
 const type = "movie";
 const rating = "g";
-const url = `${movieApiUrl}?apikey=${movieApiKey}&s=${searchTerm}&type=${type}`;
+const url = `${movieApiUrl}?apikey=${movieApiKey}&s=${searchTerm}&type=${type}&page=3`;
 const url1 = `${movieApiUrl}?apikey=${movieApiKey}&s=${romance}&type=${type}`;
 const url2 = `${movieApiUrl}?apikey=${movieApiKey}&s=${comedy}&type=${type}`;
 const url3 = `${movieApiUrl}?apikey=${movieApiKey}&s=${action}&type=${type}`;
